@@ -79,7 +79,7 @@ const q = query(docRef, orderBy('subtitle','asc'))
       querySnapshot.docs.forEach((doc) => {
         newData.push( {...doc.data(), id: doc.id});
       });
-      console.log(newData)
+      // console.log(newData)
       setData(newData);
     });
 

@@ -53,8 +53,9 @@ export default () => {
     const file = fileInput.files[0];
 
     // Create a reference to the Firebase Storage bucket
-    const uniqueFileName = `${file.name}_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
+    const uniqueFileName = `${file.name.replace(/\.[^/.]+$/, "")}_${Date.now()}.pdf`;
     const storageRef = ref(storage, `attachments/${uniqueFileName}`);
+    console.log(uniqueFileName);
 
     // const formData = new FormData(form.current);
     try {

@@ -12,7 +12,6 @@ function useFirebaseStorage() {
 		getDownloadURL(ref(storage, filePath))
         .then((url) => {
           // `url` is the download URL for 'images/stars.jpg'
-          console.log("1.")
           console.log(url)
           // This can be downloaded directly:
           const xhr = new XMLHttpRequest();
@@ -30,7 +29,7 @@ function useFirebaseStorage() {
             link.href = url;
             link.setAttribute(
               'download',
-              `${fileName}.pdf`,
+              `${fileName}`,
             );
         
             // Append to html link element page
