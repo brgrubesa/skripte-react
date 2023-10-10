@@ -30,7 +30,7 @@ function useFirebaseStorage() {
             link.href = url;
             link.setAttribute(
               'download',
-              `FileName.jpeg`,
+              `FileName.pdf`,
             );
         
             // Append to html link element page

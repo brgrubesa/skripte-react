@@ -98,7 +98,7 @@ export default () => {
       <Content>
         <FormContainer>
           <div tw="mx-auto max-w-4xl">
-            <h2>Organize an Event</h2>
+            <h2>Contribute with Study Materials or Get in Touch</h2>
             <form ref={form} onSubmit={sendEmail}>
               <TwoColumn>
                 <Column>

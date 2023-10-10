@@ -106,7 +106,7 @@ const formattedDate = date.toLocaleString();
 
 console.log(formattedDate);
 
-const q = query(docRef, orderBy('subtitle','desc'))
+const q = query(docRef, orderBy('subtitle','asc'))
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newData = [];
       querySnapshot.docs.forEach((doc) => {
@@ -126,9 +126,9 @@ const q = query(docRef, orderBy('subtitle','desc'))
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>Popular Events</HeadingTitle>
+          <HeadingTitle>Popular Materials</HeadingTitle>
           <HeadingDescription>
-            Here are some of the most popular events in New York City curated by professionals.
+            Here are some of the popular Pharmacy Learning Materials.
           </HeadingDescription>
         </HeadingInfoContainer>
 

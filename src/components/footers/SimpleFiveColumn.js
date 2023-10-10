@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "../../images/logo.svg";
+import LogoImage from "../../images/logo.png";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
@@ -34,17 +34,17 @@ const SocialLink = styled.a`
   }
 `;
 
-export default () => {
+export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToContact}) => {
   return (
     <Container>
       <FiveColumns>
         <WideColumn>
           <LogoContainer>
             <LogoImg src={LogoImage} />
-            <LogoText>Treact Inc.</LogoText>
+            <LogoText>Ivine Skripte.</LogoText>
           </LogoContainer>
           <CompanyDescription>
-            Treact is an Internet Technology company providing design resources such as website templates and themes.
+            Pharma Study Hub is place where you can find pharmaceutical study materials.
           </CompanyDescription>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
@@ -62,21 +62,21 @@ export default () => {
           <ColumnHeading>Quick Links</ColumnHeading>
           <LinkList>
             <LinkListItem>
-              <Link href="#">Blog</Link>
+              <Link onClick={scrollToFeatures}>Popular Documents</Link>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">FAQs</Link>
+                <Link onClick={scrollToBlog} >Blog</Link>
             </LinkListItem>
-            <LinkListItem>
+             {/* <LinkListItem>
               <Link href="#">Support</Link>
-            </LinkListItem>
+            </LinkListItem> */}
             <LinkListItem>
-              <Link href="#">About Us</Link>
+              <Link onClick={scrollToContact} >Contact Us</Link>
             </LinkListItem>
           </LinkList>
         </Column>
         <Column>
-          <ColumnHeading>Product</ColumnHeading>
+          {/* <ColumnHeading>Product</ColumnHeading>
           <LinkList>
             <LinkListItem>
               <Link href="#">Log In</Link>
@@ -90,10 +90,10 @@ export default () => {
             <LinkListItem>
               <Link href="#">Team</Link>
             </LinkListItem>
-          </LinkList>
+          </LinkList> */}
         </Column>
         <Column>
-          <ColumnHeading>Legal</ColumnHeading>
+          {/* <ColumnHeading>Legal</ColumnHeading>
           <LinkList>
             <LinkListItem>
               <Link href="#">GDPR</Link>
@@ -107,7 +107,7 @@ export default () => {
             <LinkListItem>
               <Link href="#">Disclaimer</Link>
             </LinkListItem>
-          </LinkList>
+          </LinkList> */}
         </Column>
       </FiveColumns>
     </Container>

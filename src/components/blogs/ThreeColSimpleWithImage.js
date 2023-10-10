@@ -33,32 +33,32 @@ export default () => {
   const blogPosts = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      category: "Event Tips",
-      title: "Finding Amazing Events Near You - Fast, Cheap & Free",
-      url: "https://timerse.com"
+        "https://img.freepik.com/free-photo/biotechnology-specialist-laboratory-conducting-experiments_23-2150468696.jpg?size=626&ext=jpg&ga=GA1.1.1100786455.1670434427&semt=ais0",
+      category: "Innovations in Pharmacy",
+      title: "Exploring the Latest Breakthroughs and Advances in Pharmaceutical Science.",
+      url: "https://www.pharmacytimes.com/"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1543365067-fa127bcb2303?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      category: "Reviews",
-      title: "The Top Rated Musical Concerts Worldwide in 2019",
-      url: "https://reddit.com"
+        "https://img.freepik.com/free-photo/man-drawing-graph_1134-212.jpg?size=626&ext=jpg&ga=GA1.1.1100786455.1670434427&semt=ais",
+      category: "Current Healthcare Trends",
+      title: "Stay Informed About Trends Shaping the Healthcare Industry Today.",
+      url: "https://www.drugtopics.com/"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-      category: "Discover",
-      title: "This female band is making buzz all over the world",
-      url: "https://timerse.com"
+        "https://img.freepik.com/premium-photo/financial-statistics-medical-medication-bottle-pills-with-graphs-charts_175682-10829.jpg?size=626&ext=jpg&ga=GA1.1.1100786455.1670434427&semt=ais",
+      category: "Unlocking Medication Insights",
+      title: "A Closer Look at Medications and Their Role in Your Health.",
+      url: "https://www.pharmacypracticenews.com/"
     }
   ];
   return (
     <Container>
       <Content>
         <HeadingInfoContainer>
-          <HeadingTitle>Popular Blog Posts</HeadingTitle>
-          <HeadingDescription>Some amazing blog posts that are written by even more amazing people.</HeadingDescription>
+          <HeadingTitle>Pharmacy News</HeadingTitle>
+          <HeadingDescription>Stay Informed with the Latest Pharmaceutical Updates and Healthcare Insights.</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
           {blogPosts.map((post, index) => (
@@ -67,7 +67,7 @@ export default () => {
                 <Image imageSrc={post.imageSrc} />
                 <Category>{post.category}</Category>
                 <Title>{post.title}</Title>
-                <Link href={post.url}>Read Post</Link>
+                <Link href={post.url} target="_blank">Explore News</Link>
               </Card>
             </Column>
           ))}
