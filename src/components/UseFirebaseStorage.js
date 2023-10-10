@@ -4,12 +4,12 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import {v4} from "uuid";
 
 function useFirebaseStorage() {
-  const [imageUpload, setImageUpload] = useState(null);
+  const [fileUpload, setFileUpload] = useState(null);
 
 
-  const downloadImage = (imagePath) => {
+  const downloadFile = (filePath, fileName) => {
     
-		getDownloadURL(ref(storage, imagePath))
+		getDownloadURL(ref(storage, filePath))
         .then((url) => {
           // `url` is the download URL for 'images/stars.jpg'
           console.log("1.")
@@ -30,7 +30,7 @@ function useFirebaseStorage() {
             link.href = url;
             link.setAttribute(
               'download',
-              `FileName.pdf`,
+              `${fileName}.pdf`,
             );
         
             // Append to html link element page
@@ -48,28 +48,27 @@ function useFirebaseStorage() {
         })
         .catch((error) => {
           // Handle any errors
-          console.log("eroor");
           console.log(error);
         });
       
     };
 
     
-  const uploadImage = () => {
+  const uploadFile = () => {
     
-    if (imageUpload == null) return;
+    if (fileUpload == null) return;
     
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then(() =>{
-        alert("Image Uploaded");
+    const fileRef = ref(storage, `documents/${fileUpload.name + v4()}`);
+    uploadBytes(fileRef, fileUpload).then(() =>{
+        alert("File Uploaded");
     });
 };
 
   return {
-    imageUpload,
-    setImageUpload,
-    uploadImage,
-    downloadImage,
+    fileUpload,
+    setFileUpload,
+    uploadFile,
+    downloadFile,
   };
 }
 

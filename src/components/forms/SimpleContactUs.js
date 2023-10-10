@@ -56,7 +56,7 @@ export default () => {
     const uniqueFileName = `${file.name}_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
     const storageRef = ref(storage, `attachments/${uniqueFileName}`);
 
-    const formData = new FormData(form.current);
+    // const formData = new FormData(form.current);
     try {
       // Upload the file to Firebase Storage if a file is selected
       if (file) {

@@ -47,43 +47,10 @@ const SvgDotPattern4 = tw(
 export default (featuresRef) => {
 
   const {
-    imageUpload,
-    setImageUpload,
-    uploadImage,
-    downloadImage,
+    setFileUpload,
+    uploadFile,
+    downloadFile,
   } = useFirebaseStorage();
-
-  const cards = [
-    {
-      imageSrc:
-        "https://www.corpnet.com/wp-content/uploads/2022/01/Legal-Document.jpg",
-      subtitle: "Paid",
-      title: "Loachella, NYC",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: 'images/slika.jpeg'
-    },
-
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1543423924-b9f161af87e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      subtitle: "Free",
-      title: "Rock In Rio, Upstate",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
-    },
-
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80",
-      subtitle: "Exclusive",
-      title: "Lollapalooza, Manhattan",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com"
-    }
-  ];
 
   const [data, setData] = useState([]);
 
@@ -140,7 +107,7 @@ const q = query(docRef, orderBy('subtitle','asc'))
                 <Subtitle>{item.subtitle}</Subtitle>
                 <Title>{item.title}</Title>
                 <Description>{item.description}</Description>
-                <Link onClick={() => downloadImage(item.url)}>Download Document</Link>
+                <Link onClick={() => downloadFile(item.url, item.url.split('/').pop())}>Download Document</Link>
               </Details>
             </Card>
           ))}
