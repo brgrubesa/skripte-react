@@ -43,7 +43,7 @@ export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToCo
         About
       </NavLink> */}
       <NavLink onClick={scrollToBlog}>
-        Blog
+        News
       </NavLink>
       {/* <NavLink onClick={scrollToTestimonial}>
         Testimonial

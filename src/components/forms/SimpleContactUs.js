@@ -52,15 +52,16 @@ export default () => {
     const fileInput = form.current.elements["attachment-input"];
     const file = fileInput.files[0];
 
-    // Create a reference to the Firebase Storage bucket
-    const uniqueFileName = `${file.name.replace(/\.[^/.]+$/, "")}_${Date.now()}.pdf`;
-    const storageRef = ref(storage, `attachments/${uniqueFileName}`);
-    console.log(uniqueFileName);
-
     // const formData = new FormData(form.current);
     try {
       // Upload the file to Firebase Storage if a file is selected
       if (file) {
+        // Create a reference to the Firebase Storage bucket
+        const uniqueFileName = `${file.name.replace(/\.[^/.]+$/, "")}_${Date.now()}.pdf`;
+        const storageRef = ref(storage, `attachments/${uniqueFileName}`);
+        console.log(uniqueFileName);
+
+        // Upload the file to Firebase Storage
         await uploadBytes(storageRef, file);
   
         // Get the download URL of the uploaded file
@@ -73,7 +74,7 @@ export default () => {
           message: form.current.message.value,
           attachment_url: downloadURL,
         };
-  
+        console.log(emailContent);
         // Send the email using emailjs.send
         await emailjs.send(
           config.emailjs.serviceId,
@@ -82,9 +83,27 @@ export default () => {
           config.emailjs.userId,
         );
   
-        console.log("Email sent successfully.");
-        e.target.reset();
+        console.log("Email sent successfully (WITH attachment).");
+      } else {
+          // No file selected, send email without uploading
+        const emailContent = {
+          name: form.current.name.value,
+          email: form.current.email.value,
+          message: form.current.message.value,
+          attachment_url: null, // You can set this to null or an empty string as needed
+        };
+
+        // Send the email using emailjs.send
+        await emailjs.send(
+          config.emailjs.serviceId,
+          config.emailjs.templateId,
+          emailContent,
+          config.emailjs.userId
+        );
+
+        console.log("Email sent successfully (without attachment).");
       }
+      e.target.reset();
     } catch (error) {
       console.error("Error:", error);
     } finally{
