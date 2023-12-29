@@ -34,31 +34,31 @@ export default () => {
     {
       imageSrc:
         "https://img.freepik.com/free-photo/biotechnology-specialist-laboratory-conducting-experiments_23-2150468696.jpg?size=626&ext=jpg&ga=GA1.1.1100786455.1670434427&semt=ais0",
-      category: "Innovations in Pharmacy",
-      title: "Exploring the Latest Breakthroughs and Advances in Pharmaceutical Science.",
-      url: "https://www.pharmacytimes.com/"
+      category: "Vaš Izvor za Medicinska Istraživanja",
+      title: "PubMed je sveobuhvatna baza znanstvenih članaka i studija, pružajući bogatstvo informacija o različitim medicinskim temama.",
+      url: "https://pubmed.ncbi.nlm.nih.gov/"
     },
     {
       imageSrc:
         "https://img.freepik.com/free-photo/man-drawing-graph_1134-212.jpg?size=626&ext=jpg&ga=GA1.1.1100786455.1670434427&semt=ais",
-      category: "Current Healthcare Trends",
-      title: "Stay Informed About Trends Shaping the Healthcare Industry Today.",
-      url: "https://www.drugtopics.com/"
+      category: "Pristup Znanstvenim Radovima",
+      title: "Sci-Hub pruža pristup znanstvenim člancima i istraživačkim radovima, čineći akademsko znanje široko dostupnim.",
+      url: "https://www.sci-hub.se/"
     },
     {
       imageSrc:
         "https://img.freepik.com/premium-photo/financial-statistics-medical-medication-bottle-pills-with-graphs-charts_175682-10829.jpg?size=626&ext=jpg&ga=GA1.1.1100786455.1670434427&semt=ais",
-      category: "Unlocking Medication Insights",
-      title: "A Closer Look at Medications and Their Role in Your Health.",
-      url: "https://www.pharmacypracticenews.com/"
+      category: "Resursi za Nutricionizam i Suplemente",
+      title: "Examine.com je vrijedan izvor informacija utemeljenih na dokazima o prehrani, suplementima i temama vezanim uz zdravlje.",
+      url: "https://examine.com/"
     }
   ];
   return (
     <Container>
       <Content>
         <HeadingInfoContainer>
-          <HeadingTitle>Pharmacy News</HeadingTitle>
-          <HeadingDescription>Stay Informed with the Latest Pharmaceutical Updates and Healthcare Insights.</HeadingDescription>
+          <HeadingTitle>Farmaceutski Portal</HeadingTitle>
+          <HeadingDescription> Vaša ulaznica u najnovija farmaceutska istraživanja, akademske materijale i znanstveno znanje.</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
           {blogPosts.map((post, index) => (
@@ -67,7 +67,7 @@ export default () => {
                 <Image imageSrc={post.imageSrc} />
                 <Category>{post.category}</Category>
                 <Title>{post.title}</Title>
-                <Link href={post.url} target="_blank">Explore News</Link>
+                <Link href={post.url} target="_blank">Posjeti stranicu</Link>
               </Card>
             </Column>
           ))}

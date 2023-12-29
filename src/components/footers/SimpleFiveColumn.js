@@ -2,6 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import { Link } from 'react-scroll';
 
 import LogoImage from "../../images/logo.png";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
@@ -18,7 +19,7 @@ const ColumnHeading = tw.h5`font-bold`;
 
 const LinkList = tw.ul`mt-4 text-sm font-medium`;
 const LinkListItem = tw.li`mt-3`;
-const Link = tw.a`border-b-2 border-transparent hocus:text-primary-500 hocus:border-primary-500 pb-1 transition duration-300`;
+const LinkElement = tw.a`border-b-2 border-transparent hocus:text-primary-500 hocus:border-primary-500 pb-1 transition duration-300`;
 
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
 const LogoImg = tw.img`w-8`;
@@ -44,34 +45,40 @@ export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToCo
             <LogoText>Ivine Skripte.</LogoText>
           </LogoContainer>
           <CompanyDescription>
-            Pharma Study Hub is place where you can find pharmaceutical study materials.
+            Ova stranica je mjesto gdje će te uskoro moći naći sve skripte za Farmaceutsko-biokemijski fakultet.
           </CompanyDescription>
           <SocialLinksContainer>
-            <SocialLink href="https://facebook.com">
+            <SocialLink /*href="https://facebook.com"*/>
               <FacebookIcon />
             </SocialLink>
-            <SocialLink href="https://twitter.com">
+            <SocialLink>
               <TwitterIcon />
             </SocialLink>
-            <SocialLink href="https://youtube.com">
+            <SocialLink>
               <YoutubeIcon />
             </SocialLink>
           </SocialLinksContainer>
         </WideColumn>
         <Column>
-          <ColumnHeading>Quick Links</ColumnHeading>
+          <ColumnHeading>Brzi Linkovi</ColumnHeading>
           <LinkList>
             <LinkListItem>
-              <Link onClick={scrollToFeatures}>Popular Documents</Link>
+            <LinkElement>
+              <Link to="features" spy={true} smooth={true} duration={500}>Skripte</Link>
+            </LinkElement>
             </LinkListItem>
             <LinkListItem>
-                <Link onClick={scrollToBlog} >Blog</Link>
+            <LinkElement>
+              <Link to="blog" spy={true} smooth={true} duration={500}>Portal</Link>
+            </LinkElement>
             </LinkListItem>
              {/* <LinkListItem>
-              <Link href="#">Support</Link>
+              <LinkElement href="#">Support</LinkElement>
             </LinkListItem> */}
             <LinkListItem>
-              <Link onClick={scrollToContact} >Contact Us</Link>
+            <LinkElement>
+              <Link to="contact" spy={true} smooth={true} duration={500}>Kontakt</Link>
+            </LinkElement>
             </LinkListItem>
           </LinkList>
         </Column>
@@ -79,16 +86,16 @@ export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToCo
           {/* <ColumnHeading>Product</ColumnHeading>
           <LinkList>
             <LinkListItem>
-              <Link href="#">Log In</Link>
+              <LinkElement href="#">Log In</LinkElement>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">Personal</Link>
+              <LinkElement href="#">Personal</LinkElement>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">Business</Link>
+              <LinkElement href="#">Business</LinkElement>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">Team</Link>
+              <LinkElement href="#">Team</LinkElement>
             </LinkListItem>
           </LinkList> */}
         </Column>
@@ -96,16 +103,16 @@ export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToCo
           {/* <ColumnHeading>Legal</ColumnHeading>
           <LinkList>
             <LinkListItem>
-              <Link href="#">GDPR</Link>
+              <LinkElement href="#">GDPR</LinkElement>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">Privacy Policy</Link>
+              <LinkElement href="#">Privacy Policy</LinkElement>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">Terms of Service</Link>
+              <LinkElement href="#">Terms of Service</LinkElement>
             </LinkListItem>
             <LinkListItem>
-              <Link href="#">Disclaimer</Link>
+              <LinkElement href="#">Disclaimer</LinkElement>
             </LinkListItem>
           </LinkList> */}
         </Column>

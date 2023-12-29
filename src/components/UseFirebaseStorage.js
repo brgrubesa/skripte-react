@@ -12,14 +12,14 @@ function useFirebaseStorage() {
 		getDownloadURL(ref(storage, filePath))
         .then((url) => {
           // `url` is the download URL for 'images/stars.jpg'
-          console.log(url)
+          // console.log(url)
           // This can be downloaded directly:
           const xhr = new XMLHttpRequest();
           xhr.responseType = 'blob';
           xhr.onload = (event) => {
             const blob = xhr.response;
-            console.log(blob);
-            console.log(xhr.status);
+            // console.log(blob);
+            // console.log(xhr.status);
       
             // Create blob link to download
             const url = window.URL.createObjectURL(

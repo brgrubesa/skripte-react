@@ -9,11 +9,25 @@ import config from "../../config";
 
 export default () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState(null);
   const form = useRef();
 
   const sendEmail = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const name = form.current.name.value;
+    const email = form.current.email.value;
+    const message = form.current.message.value;
+
+     // Validate that name, email, and message are not empty
+     if (!name || !email || !message) {
+      setValidationError("Molimo Vas ispunite prva tri polja.");
+      setIsSubmitting(false);
+      return;
+    } else {
+      setValidationError(null);
+    }
 
     // Access the file input directly
     const fileInput = form.current.elements["attachment-input"];
@@ -26,7 +40,7 @@ export default () => {
         // Create a reference to the Firebase Storage bucket
         const uniqueFileName = `${file.name.replace(/\.[^/.]+$/, "")}_${Date.now()}.pdf`;
         const storageRef = ref(storage, `attachments/${uniqueFileName}`);
-        console.log(uniqueFileName);
+        // console.log(uniqueFileName);
 
         // Upload the file to Firebase Storage
         await uploadBytes(storageRef, file);
@@ -41,13 +55,13 @@ export default () => {
           message: form.current.message.value,
           attachment_url: downloadURL,
         };
-        console.log(emailContent);
+        //console.log(emailContent);
         // Send the email using emailjs.send
         await emailjs.send(
-          config.emailjs.serviceId,
-          config.emailjs.templateId,
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
           emailContent, // Pass the email content object
-          config.emailjs.userId,
+          process.env.REACT_APP_EMAILJS_USER_ID,
         );
   
         console.log("Email sent successfully (WITH attachment).");
@@ -85,33 +99,34 @@ export default () => {
       <Content>
         <FormContainer>
           <div tw="mx-auto max-w-4xl">
-            <h2>Contribute with Study Materials or Get in Touch</h2>
+            <h2>Pošalji skriptu ili recenziju</h2>
+            {validationError && <div style={{ color: "red" }}>{validationError}</div>}
             <form ref={form} onSubmit={sendEmail}>
               <TwoColumn>
                 <Column>
                   <InputContainer>
-                    <Label htmlFor="name-input">Your Name</Label>
-                    <Input id="name-input" type="text" name="name" placeholder="E.g. John Doe" />
+                    <Label htmlFor="name-input">Tvoje ime</Label>
+                    <Input id="name-input" type="text" name="name" placeholder="Marko Zdravko" />
                   </InputContainer>
                   <InputContainer>
-                    <Label htmlFor="email-input">Your Email Address</Label>
-                    <Input id="email-input" type="email" name="email" placeholder="E.g. john@mail.com" />
+                    <Label htmlFor="email-input">Tvoj Email</Label>
+                    <Input id="email-input" type="email" name="email" placeholder="marko@mail.com" />
                   </InputContainer>
                 </Column>
                 <Column>
                   <InputContainer tw="flex-1">
-                    <Label htmlFor="name-input">Your Message</Label>
-                    <TextArea id="message-input" name="message" placeholder="E.g. Details about your event" maxLength={72}/>
+                    <Label htmlFor="name-input">Tvoja poruka</Label>
+                    <TextArea id="message-input" name="message" placeholder="Detalji" maxLength={72}/>
                   </InputContainer>
                   <InputContainer>
-                    <Label htmlFor="attachment-input">Attach File</Label>
+                    <Label htmlFor="attachment-input">Priložite dokument (.pdf) ako želite</Label>
                     <Input id="attachment-input" type="file" name="attachment" accept=".pdf,.doc,.docx"/>
                   </InputContainer>
                   {/* Hidden input to store the download URL */}
                   <HiddenInput type="text" name="attachment-url" />
                 </Column>
               </TwoColumn>
-              <SubmitButton type="submit" value="Submit" disabled={isSubmitting}>{isSubmitting ? "Sending..." : "Submit"}</SubmitButton>
+              <SubmitButton type="submit" value="Submit" disabled={isSubmitting}>{isSubmitting ? "Šalje se..." : "Pošalji"}</SubmitButton>
             </form>
           </div>
           <SvgDotPattern1 />

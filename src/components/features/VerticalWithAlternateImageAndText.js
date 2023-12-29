@@ -31,10 +31,10 @@ export default (featuresRef) => {
     //   url: 'images/slika.jpeg',
     //   timestamp: new Date()
     // })
-    const date = new Date();
-const formattedDate = date.toLocaleString();
+//     const date = new Date();
+// const formattedDate = date.toLocaleString();
 
-console.log(formattedDate);
+// console.log(formattedDate);
 
 const q = query(docRef, orderBy('subtitle','asc'))
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -56,9 +56,9 @@ const q = query(docRef, orderBy('subtitle','asc'))
     <Container>
       <SingleColumn>
         <HeadingInfoContainer>
-          <HeadingTitle>Popular Materials</HeadingTitle>
+          <HeadingTitle>Skripte za Farmaceutsko-biokemijski fakultet - sve na jednom mjestu!</HeadingTitle>
           <HeadingDescription>
-            Here are some of the popular Pharmacy Learning Materials.
+          “Nobody ever figures out what life is all about, and it doesn't matter. Explore the world. Nearly everything is really interesting if you go into it deeply enough.” - Richard P. Feynman
           </HeadingDescription>
         </HeadingInfoContainer>
 
@@ -67,10 +67,10 @@ const q = query(docRef, orderBy('subtitle','asc'))
             <Card key={i} reversed={i % 2 === 1}>
               <Image imageSrc={item.imageSrc} />
               <Details>
-                <Subtitle>{item.subtitle}</Subtitle>
+                {/* <Subtitle>{item.subtitle}</Subtitle> */}
                 <Title>{item.title}</Title>
                 <Description>{item.description}</Description>
-                <Link onClick={() => downloadFile(item.url, item.url.split('/').pop())}>Download Document</Link>
+                <Link onClick={() => downloadFile(item.url, item.url.split('/').pop())}>Preuzmi skriptu</Link>
               </Details>
             </Card>
           ))}

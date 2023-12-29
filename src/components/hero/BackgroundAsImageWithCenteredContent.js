@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import backgorundImage from '../../images/hero-page1.jpg'
 import { css } from "styled-components/macro"; //eslint-disable-line
+import { Link } from 'react-scroll';
 
 import Header, { NavLink, NavLinks, PrimaryLink as PrimaryLinkBase, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 
@@ -42,15 +43,19 @@ export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToCo
       {/* <NavLink href="#">
         About
       </NavLink> */}
-      <NavLink onClick={scrollToBlog}>
-        News
-      </NavLink>
+      <Link to="blog" spy={true} smooth={true} duration={500}>
+        <NavLink>
+          Portal
+        </NavLink>
+      </Link>
       {/* <NavLink onClick={scrollToTestimonial}>
         Testimonial
       </NavLink> */}
-      <NavLink onClick={scrollToContact}>
-        Contact
-      </NavLink>
+      <Link to="contact" spy={true} smooth={true} duration={500} >
+        <NavLink>
+          Kontakt
+        </NavLink>
+      </Link>
     </NavLinks>,
     <NavLinks key={2}>
       {/* <PrimaryLink href="/signIn">
@@ -66,9 +71,13 @@ export default ({scrollToFeatures, scrollToBlog, scrollToTestimonial, scrollToCo
         <StyledHeader links={navLinks} />
         <Content>
           <Heading>
-            Pharma Study Hub
+            Ivine skripte 
           </Heading>
-          <PrimaryAction onClick={scrollToFeatures} >Search Documents</PrimaryAction>
+          <Link to="features" spy={true} smooth={true} duration={500}>
+            <PrimaryAction>
+              Traži skripte
+            </PrimaryAction>
+          </Link>
         </Content>
       </HeroContainer>
     </Container>
